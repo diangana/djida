@@ -1,0 +1,22 @@
+<div *ngIf="isadmin=='1'">
+  <a routerLink="/admin/add/article" class="btn btn-success">écrire un nouvel article</a>
+</div>
+<div class="card " >
+  <div class="row g-0"*ngFor="let article of articles let id = index">
+    <div class="col-md-4" *ngIf="article.image!=null">
+      <img src= "\assets\images\upload\{{article.image}}"  class="rounded float-end" [alt]="article.nom_article"style="width: 100%;height: 100%;">
+    </div>
+    <div class="col-md-4" *ngIf="article.image==null">
+      <img src= "\assets\images\DJIDA.png"  class="rounded float-end" [alt]="article.nom_article"style="width: 100%;">
+          </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <a routerLink="../article/{{article.id_article}}"><h5 class="card-title">{{article.nom_article}}</h5></a>
+         <p class="card-text">{{article.contenue?.substr(0,200) }}</p>
+        <p class="card-text"><small class="text-muted">écrit le {{article.date_creation|date }}</small></p>
+        <a routerLink="../article/{{article.id_article}}"class="btn btn-outline-success">Lire la suite</a>
+
+      </div>
+    </div>
+  </div>
+</div>

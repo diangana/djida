@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg sticky-top  navbar-dark padding-y ">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse"  id="navbarTogglerDemo01">
+      <a class="navbar-brand" routerLink="/"><img class="img-responsive" src="\assets\images\LOGO.png" alt="LOGO">
+      </a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="accueil">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="article">actualite</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="cagnottes">Cagnottes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="panier">panier de don</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="apropos">A propos </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="contact">Contact</a>
+        </li>
+
+      </ul>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+        <li> <a  class="nav-link" routerLink="admin">{{loggedUser}}</a></li>
+
+        <li class="nav-item" style="text-align: left;">
+        <a class="nav-link" style="text-align: left;" *ngIf="isLoggedin==null || isLoggedin=='false'"  routerLink = "connexion">connexion</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link"style="text-align: left;" *ngIf="isLoggedin=='true'"  (click) = "onLogout()">deconnexion</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" style="text-align: left;"*ngIf="isLoggedin=='true'" routerLink="admin">Profil</a>
+        </li>
+        </ul>
+    </div>
+  </div>
+</nav>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

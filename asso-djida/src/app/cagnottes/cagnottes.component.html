@@ -1,0 +1,76 @@
+<div class="text-center" *ngIf="isadmin=='1'">
+  <a routerLink="/admin/add/cagnotte" class="btn btn-success">créer une nouvelle cagnotte</a>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="container">
+      <div *ngIf="loggedUser!=null">
+        <div class="row" *ngFor="let cagnotte of cagnottes">
+          <div *ngIf="cagnotte.statut==1 && cagnotte.categorie=='cotisation'">
+            <div  class="col">
+              <div class="card ">
+                <H4 style="color: rgb(2, 26, 105);">cotisation Adhérents</H4>
+                <a *ngIf="cagnotte.image!= null" routerLink="../cagnottes/{{cagnotte.id_cagnotte}}"><img src= "\assets\images\upload\{{cagnotte.image}}" class="rounded mx-auto d-block"   [alt]="cagnotte.nom_cagnotte"style="width: 30%;"></a>
+                <a *ngIf="cagnotte.image == null" routerLink="../cagnottes/{{cagnotte.id_cagnotte}}"><img src= "\assets\images\DJIDA.png" class="rounded mx-auto d-block"   [alt]="cagnotte.nom_cagnotte"style="width: 30%"></a>
+                <div class="card-body">
+                  <h5 class="card-title" style="color: rgb(2, 26, 105);">{{cagnotte.nom_cagnotte}}</h5>
+                  <p class="card-text">{{cagnotte.description.substr(0,200) }}</p>
+                  <a routerLink="../cagnottes/{{cagnotte.id_cagnotte}}" class="btn btn-outline-success">en savoir plus</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  <div class="col">
+<div class="container">
+  <div class="row" *ngFor="let cagnotte of cagnottes">
+    <div *ngIf="cagnotte.statut==1 && cagnotte.categorie!='cotisation'">
+
+      <div  class="col">
+        <div class="card ">
+          <H4>Cagnotte en cours</H4>
+          <a *ngIf="cagnotte.image!= null" routerLink="../cagnottes/{{cagnotte.id_cagnotte}}"><img src= "\assets\images\upload\{{cagnotte.image}}" class="rounded mx-auto d-block"   [alt]="cagnotte.nom_cagnotte"style="width: 30%;"></a>
+          <a *ngIf="cagnotte.image == null" routerLink="../cagnottes/{{cagnotte.id_cagnotte}}"><img src= "\assets\images\DJIDA.png" class="rounded mx-auto d-block"   [alt]="cagnotte.nom_cagnotte"style="width: 30%"></a>
+          <div class="card-body">
+            <h5 class="card-title">{{cagnotte.nom_cagnotte}}</h5>
+            <p class="card-text">{{cagnotte.description.substr(0,200) }}</p>
+            <a routerLink="../cagnottes/{{cagnotte.id_cagnotte}}" class="btn btn-outline-success">en savoir plus</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  <div class="col">
+    <div class="container">
+      <div *ngIf="loggedUser!=null">
+        <div class="row" *ngFor="let cagnotte of cagnottes">
+          <div *ngIf="cagnotte.statut==0">
+            <div  class="col">
+              <div class="card ">
+                <H4 style="color: rgb(255, 174, 0);">cagnottes terminées</H4>
+                <a *ngIf="cagnotte.image!= null" routerLink="../cagnottes/{{cagnotte.id_cagnotte}}"><img src= "\assets\images\upload\{{cagnotte.image}}" class="rounded mx-auto d-block"   [alt]="cagnotte.nom_cagnotte"style="width: 30%;"></a>
+                <a *ngIf="cagnotte.image == null" routerLink="../cagnottes/{{cagnotte.id_cagnotte}}"><img src= "\assets\images\DJIDA.png" class="rounded mx-auto d-block"   [alt]="cagnotte.nom_cagnotte"style="width: 30%"></a>
+                <div class="card-body">
+                  <h5 class="card-title" style="color: rgb(255, 174, 0);">{{cagnotte.nom_cagnotte}}</h5>
+                  <p class="card-text">{{cagnotte.description.substr(0,200) }}</p>
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                  <a routerLink="../cagnottes/{{cagnotte.id_cagnotte}}" class="btn btn-outline-success">En savoir plus</a>
+                  <a routerLink="/admin/modifier/cagnotte/{{cagnotte.id_cagnotte}}" class="btn btn-outline-warning">modifier</a>
+                  <button routerLink="../cagnottes/{{cagnotte.id_cagnotte}}" (click)="supprimer(cagnotte.id_cagnotte)" class="btn btn-outline-danger">Supprimer</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>

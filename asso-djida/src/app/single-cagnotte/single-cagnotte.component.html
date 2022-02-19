@@ -1,0 +1,84 @@
+<div class="card mb-1"  *ngFor="let CurrentCagnotte of currentCagnotte ">
+  <div class="row g-0" >
+  <H1>{{CurrentCagnotte['nom_cagnotte'] }}</H1>
+  <div *ngIf="isadmin=='1'">
+    <a routerLink="/admin/modifier/cagnotte/{{CurrentCagnotte.id_cagnotte}}" class="btn btn-warning">modifier la cagnotte</a>
+  </div>
+  <div *ngIf="(currentCagnotte[0].statut==1 && CurrentCagnotte.categorie!='cotisation') ">
+
+ <div  *ngIf="currentCagnotte[0].image!=null">
+    <img  src= "\assets\images\upload\{{currentCagnotte[0].image}}" class="img-fluid rounded-start"   [alt]="CurrentCagnotte.nom_cagnotte"style="width: 50%;">
+  </div>
+  <div  *ngIf="currentCagnotte[0].image==null">
+    <img src= "\assets\images\DJIDA.png" class="img-fluid rounded-start"   [alt]="CurrentCagnotte.nom_cagnotte"style="width: 50%;">
+  </div>
+    <div >
+      <div class="card-body">
+        <p class="card-text">{{CurrentCagnotte.description|json}}</p>
+        <p class="card-text"><small class="text-muted">fini le {{CurrentCagnotte.date_cloture| date: 'à HH:mm, le d MMMM yyyy'}}</small></p>
+        <p class="card-text"><small class="text-muted">Objectif {{CurrentCagnotte.montant_objectif}}€</small></p>
+        <p class="card-text"><small class="text-muted">montant minimum d'un don {{CurrentCagnotte.don_min}}€</small></p>
+</div>
+  </div>
+  <a a routerLink="/panier" type="bouton" class="btn btn-success" (click)="handelAddToCart(CurrentCagnotte)">Ajouter au panier</a>
+  <a a routerLink="/cagnottes" class="btn btn-outline-dark">Retour à la liste</a>
+
+</div>
+
+</div>
+  <div *ngIf="currentCagnotte[0].statut!=1">
+    <h1>cagnotte terminée</h1>
+    <a a routerLink="/cagnottes" class="btn btn-outline-dark">Retour à la liste</a>
+    <div  *ngIf="currentCagnotte[0].image!=null">
+      <img  src= "\assets\images\upload\{{currentCagnotte[0].image}}" class="img-fluid rounded-start"   [alt]="CurrentCagnotte.nom_cagnotte"style="width: 50%;">
+    </div>
+    <div  *ngIf="currentCagnotte[0].image==null">
+      <img src= "\assets\images\DJIDA.png" class="img-fluid rounded-start"   [alt]="CurrentCagnotte.nom_cagnotte"style="width: 50%;">
+    </div>
+      <div >
+        <div class="card-body">
+          <p class="card-text">{{CurrentCagnotte.description|json}}</p>
+          <p class="card-text"><small class="text-muted">fini le {{CurrentCagnotte.date_cloture| date: 'à HH:mm, le d MMMM yyyy'}}</small></p>
+          <p class="card-text"><small class="text-muted">Objectif {{CurrentCagnotte.montant_objectif}}€</small></p>
+          <p class="card-text"><small class="text-muted">montant minimum d'un don {{CurrentCagnotte.don_min}}€</small></p>
+  </div>
+    </div>
+  </div>
+  <div *ngIf="currentCagnotte[0].statut==1 &&CurrentCagnotte.id_cagnotte==1&&fin_cot>=today">
+    <h1>Votre cotisation est à jour</h1>
+    <div  *ngIf="currentCagnotte[0].image!=null">
+      <img  src= "\assets\images\upload\{{currentCagnotte[0].image}}" class="img-fluid rounded-start"   [alt]="CurrentCagnotte.nom_cagnotte"style="width: 50%;">
+    </div>
+    <div  *ngIf="currentCagnotte[0].image==null">
+      <img src= "\assets\images\DJIDA.png" class="img-fluid rounded-start"   [alt]="CurrentCagnotte.nom_cagnotte"style="width: 50%;">
+    </div>
+      <div >
+        <div class="card-body">
+          <p class="card-text">{{CurrentCagnotte.description|json}}</p>
+          <p class="card-text"><small class="text-muted">fini le {{CurrentCagnotte.date_cloture| date: 'à HH:mm, le d MMMM yyyy'}}</small></p>
+          <p class="card-text"><small class="text-muted">Objectif {{CurrentCagnotte.montant_objectif}}€</small></p>
+          <p class="card-text"><small class="text-muted">montant minimum d'un don {{CurrentCagnotte.don_min}}€</small></p>
+  </div>
+    </div>
+    <a a routerLink="/cagnottes" class="btn btn-outline-dark">Retour à la liste</a>
+  </div>
+  <div *ngIf="currentCagnotte[0].statut==1 &&loggedUser!=null && CurrentCagnotte.id_cagnotte!=1||CurrentCagnotte.id_cagnotte==1&&fin_cot<=today ">
+    <div  *ngIf="currentCagnotte[0].image!=null">
+      <img  src= "\assets\images\upload\{{currentCagnotte[0].image}}" class="img-fluid rounded-start"   [alt]="CurrentCagnotte.nom_cagnotte"style="width: 50%;">
+    </div>
+    <div  *ngIf="currentCagnotte[0].image==null">
+      <img src= "\assets\images\DJIDA.png" class="img-fluid rounded-start"   [alt]="CurrentCagnotte.nom_cagnotte"style="width: 50%;">
+    </div>
+      <div >
+        <div class="card-body">
+          <p class="card-text">{{CurrentCagnotte.description|json}}</p>
+          <p class="card-text"><small class="text-muted">fini le {{CurrentCagnotte.date_cloture| date: 'à HH:mm, le d MMMM yyyy'}}</small></p>
+          <p class="card-text"><small class="text-muted">Objectif {{CurrentCagnotte.montant_objectif}}€</small></p>
+          <p class="card-text"><small class="text-muted">montant minimum d'un don {{CurrentCagnotte.don_min}}€</small></p>
+  </div>
+    </div>
+    <a a routerLink="/panier" type="bouton" class="btn btn-success" (click)="handelAddToCart(CurrentCagnotte)">Ajouter au panier</a>
+    <a a routerLink="/cagnottes" class="btn btn-outline-dark">Retour à la liste</a>
+
+  </div>
+</div>

@@ -1,0 +1,27 @@
+Ecrire un nouvel article
+<app-upload></app-upload>
+<app-uploadvideo></app-uploadvideo>
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <form #f="ngForm">
+      <div class="form-group">
+        <label for="name">Nom de l'article</label>
+      <input [(ngModel)]="article.nom_article" name="nom_article" id="nom_article" class="form-control form-control-lg" required>
+      </div>
+      <div class="form-group">
+        <div class="mb-3">
+          <label for="contenue">corps de l'article</label>
+        <div class="mb-3">
+          <textarea class="form-control form-control-lg" name="contenue" id="contenue" rows="7"   [(ngModel)]="article.contenue" required></textarea>
+        </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="date_c">date publication</label>
+      <input type="datetime-local" name="date_c" id="date_c" class="form-control form-control-lg"  [(ngModel)]="article.date_creation"  required>
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="f.invalid" (click)="addArticle()">Enregistrer</button>
+
+    </form>
+  </div>
+</div>

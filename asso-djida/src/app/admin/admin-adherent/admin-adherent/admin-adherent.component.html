@@ -1,0 +1,40 @@
+<h1>liste des adhérents</h1>
+<a routerLink="/admin/add/adherent" class="btn btn-success">ajouter un nouvel adhérent</a>
+<div class="container">
+  <div class="row">
+<div class="col">
+  <div  *ngFor="let adherentpas of adherents_pas">
+    <div *ngIf="adherentpas">
+    <div class="card" style="border-color: red;">
+
+      <div class="card-body">
+    <h5 class="card-title">{{adherentpas.nom}}      {{adherentpas.prenom}}</h5>
+<p>n°tel: {{adherentpas.telephone}}       email:{{adherentpas.email}}</p>
+<p>date d'adhésion: {{adherentpas.date_adhesion|date:'dd/MM/yyyy'}}  date de cotisation:{{adherentpas.date_cotisation|date:'dd/MM/yyyy'}}</p>
+</div>
+<div class="btn-group" role="group">
+  <a type="bouton" class="btn btn-danger" (click)="supprimer(adherentpas.email)">Supprimer</a>
+<a routerLink="/admin/modifier/adherent/{{adherentpas.email}}" type="button" class="btn btn-warning">mettre à jour</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col">
+
+  <div  *ngFor="let adherent of adherents">
+    <div *ngIf="adherent">
+
+    <div class="card" style="border-color: green;">
+      <div class="card-body">
+    <h5 class="card-title">{{adherent.nom}}      {{adherent.prenom}}</h5>
+<p>n°tel: {{adherent.telephone}}       email:{{adherent.email}}</p>
+<p>date d'adhésion: {{adherent.date_adhesion|date:'dd/MM/yyyy'}}  date de cotisation:{{adherent.date_cotisation|date:'dd/MM/yyyy'}}</p>
+</div>
+  <a type="bouton" class="btn btn-danger" (click)="supprimer(adherent.email)">Supprimer</a>
+</div>
+</div>
+</div>
+</div>
+</div>

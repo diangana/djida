@@ -1,0 +1,57 @@
+
+<h1>Ajouter une nouvelle cagnotte</h1>
+<div>
+  <app-upload></app-upload>
+
+  <div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <form #f="ngForm">
+  <div class="form-group">
+  <label for="name">Nom de la Cagnotte</label>
+<input [(ngModel)]="currentCagnotte.nom_cagnotte" name="nom_cagnotte" id="nom_cagnotte" class="form-control form-control-lg" required>
+</div>
+<div class="form-group">
+  <label for="DataList" class="form-label">categorie</label>
+<input   name="categorie"[(ngModel)]="currentCagnotte.categorie" class="form-control" list="datalistOptions" id="DataList" placeholder="Type de cagnotte..." required>
+<datalist  id="datalistOptions">
+  <option value="education">
+  <option value="agriculture">
+  <option value="alimentaire">
+  <option value="divers">
+</datalist>
+</div>
+<div class="form-group">
+  <label for="DataList2" class="form-label">statut</label>
+<input   name="statut"[(ngModel)]="currentCagnotte.statut" class="form-control" list="datalistOptions2" id="DataList2" placeholder="statut de la cagnotte..." required>
+<datalist  id="datalistOptions2">
+  <option value=1>en cours</option>
+  <option value=0>en pause</option>
+</datalist>
+</div>
+<div class="form-group">
+  <div class="mb-3">
+  <label for="description">description de la Cagnotte</label>
+  <div class="mb-3">
+  <textarea class="form-control form-control-lg" name="description" id="description" rows="7"   [(ngModel)]="currentCagnotte.description" required></textarea>
+</div>
+</div>
+</div>
+
+
+<div class="form-group">
+  <label for="objectif">montant à récolter(en €)</label>
+<input type="number" name="objectif" id="objectif" class="form-control form-control-lg" [(ngModel)]="currentCagnotte.montant_objectif" required>
+</div>
+<div class="form-group">
+  <label for="don_min">minimun pour un don (en €)</label>
+<input type="number" name="don_min" id="don_min" class="form-control form-control-lg" [(ngModel)]="currentCagnotte.don_min" required>
+</div>
+<div class="form-group">
+  <label for="date_cloture">date de fin de la collecte</label>
+<input type="datetime-local" name="date_cloture" id="date_cloture" class="form-control form-control-lg"  [(ngModel)]="currentCagnotte.date_cloture"  required>
+</div>
+<button class="btn btn-primary" type="submit" [disabled]="f.invalid" (click)="addCagnotte()">Enregistrer</button>
+</form>
+</div>
+</div>
+</div>

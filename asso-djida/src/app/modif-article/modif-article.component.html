@@ -1,0 +1,27 @@
+<h1>Modifier</h1>
+<div class="row"*ngFor="let currentarticle of currentArticle">
+  <div class="col-md-6"*ngIf="currentarticle.image!=null">
+    <img src= "\assets\images\upload\{{currentarticle.image}}" class="img-fluid rounded-start"   [alt]="currentarticle.Nom_Article"style="width: 30rem;">
+  </div>
+  <div class="col-sm-8 col-sm-offset-2">
+    <app-upload></app-upload>
+<app-uploadvideo></app-uploadvideo>
+
+    <form #f="ngForm">
+      <div class="form-group">
+        <label for="name">Nom de l'article</label>
+      <input type="text"[(ngModel)]="currentarticle.nom_article" name="nom_article" id="nom_article" class="form-control form-control-lg" required>
+      </div>
+      <div class="form-group">
+        <div class="mb-3">
+          <label for="contenue">corps de l'article</label>
+          <div class="mb-3">
+            <textarea class="form-control form-control-lg" name="contenue" id="contenue" rows="7"    [(ngModel)]="currentarticle.contenue" required></textarea>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="f.invalid" (click)="modifArticle(currentarticle)">Enregistrer</button>
+
+    </form>
+  </div>
+</div>

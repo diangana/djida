@@ -1,0 +1,28 @@
+<div class="card"  *ngFor="let articles of currentArticle">
+  <H1>{{articles.nom_article}}</H1>
+  <div *ngIf="isadmin=='1'">
+    <a routerLink="/admin/modifier/article/{{articles.id_article}}" class="btn btn-success">modifier l'article</a>
+  </div>
+  <div class="row g-0">
+    <div class="col-md-6">
+      <div class="card-body">
+    <p class="card-text">{{articles.contenue}}</p>
+  </div>
+</div>
+  <div class="col-md-6">
+    <img *ngIf="articles.image!=null" src= "\assets\images\upload\{{articles.image}}" class="img-fluid rounded-start"   [alt]="articles.Nom_Article"style="width: 100%;">
+    <img *ngIf="articles.image==null" src= "\assets\images\LOGO"  class="img-fluid rounded-start" [alt]="articles.nom_article"style="width:100%">
+    <div *ngIf="articles.video!=null">
+      <video  style="width: 100%;" autoplaycontrols>
+        <source src="\assets\images\upload\{{articles.video}}" type="video/mp4">
+      </video>
+      </div>
+        </div>
+
+
+
+<a  routerLink="/cagnottes}}" class="btn btn-outline-success">Faire un don</a>
+  </div>
+  <a  routerLink="/actualite" class="btn btn-outline-dark">Retour à la liste</a>
+
+</div>

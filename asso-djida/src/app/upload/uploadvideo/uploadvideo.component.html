@@ -1,0 +1,10 @@
+<div class="wrapper">
+  Ajouter une video
+  <div class="file-upload">
+    <input type="file" name="video" ng2FileSelect [uploader]="uploader" accept="video/mp4" />
+    <button type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+      Upload
+    </button>
+  </div>
+
+</div>

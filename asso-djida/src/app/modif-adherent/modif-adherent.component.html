@@ -1,0 +1,37 @@
+<div class="row" *ngFor="let adherent of adherents">
+
+  <div class="col-sm-8 col-sm-offset-2" *ngIf="isadmin==1 ||adherent.email==loggedUser">
+    <h1>Mise à jour </h1>
+    <form #f="ngForm">
+  <div class="form-group">
+  <label for="nom">Nom </label>
+<input  name="nom" id="nom" class="form-control form-control-lg"[(ngModel)]="adherent.nom" required>
+</div>
+<div class="form-group">
+  <label for="prenom">Prénom </label>
+<input  name="prenom" id="prenom" class="form-control form-control-lg"[(ngModel)]="adherent.prenom" required>
+</div>
+<div class="form-group">
+  <label for="emil">Email </label>
+<input type="email" name="email" id="email" class="form-control form-control-lg" [(ngModel)]="adherent.email" required>
+</div>
+<div class="form-group">
+  <label for="telephone">N° de téléphone </label>
+<input type="number"  name="telephone" id="telephone" class="form-control form-control-lg" [(ngModel)]="adherent.telephone" required>
+</div>
+<div *ngIf="isadmin==1">
+<div class="form-group">
+  <label for="date_cotisation">date de cotisation</label>
+<input type="datetime-local" name="date_cotisation" id="date_cotisation" class="form-control form-control-lg" [(ngModel)]="adherent.date_cotisation" required>
+</div>
+<input type="checkbox" id="admin" name="admin" value=1 [(ngModel)]="adherent.admin">
+  <label for="admin"> administrateur du site</label><br>
+</div>
+  <button class="btn btn-success" type="submit" [disabled]="f.invalid" (click)="modifAdherent(adherent)" >Enregistrer</button>
+</form>
+</div>
+<div *ngIf="isadmin==0 && adherent.email!=loggedUser">
+  <h1>Accès refusé </h1>
+  <img src="assets/images/DJIDA.png" alt="logo">
+  </div>
+</div>

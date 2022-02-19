@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <h1>Nous contacter</h1>
+  <div class="row justify-content-md-center">
+    <div class="col">
+      <p>N'hésitez pas à nous contactez pour toutes questions ou demandes d'adhésions,c'est avec plaisir que notre équipe vous recontactera</p>
+
+      <form #f="ngForm">
+        <div class="row">
+        <div class="col-4">
+        <div class="form-group">
+          <label for="nom">Nom </label>
+          <input  name="nom" id="nom" class="form-control form-control-lg" required>
+        </div>
+        <div class="form-group">
+          <label for="prenom">Prénom </label>
+          <input  name="prenom" id="prenom" class="form-control form-control-lg" required>
+        </div>
+        <div class="form-group">
+          <label for="emil">Email </label>
+<input type="email" name="email" id="email" class="form-control form-control" [(ngModel)]="email.adresse" required>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="form-group">
+          <label for="objet">Objet du message </label>
+          <input  name="objet" id="objet" class="form-control form-control-lg" [(ngModel)]="email.objet" required>
+        </div>
+        <div class="form-group">
+          <div class="mb-3">
+            <label for="message">Message</label>
+            <div class="mb-3">
+              <textarea class="form-control form-control-lg" name="message" id="message" rows="3" [(ngModel)]="email.message" required></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        <button class="btn btn-outline-success" type="submit" [disabled]="f.invalid" (click)="evoyer(email)" >Evoyer</button>
+      </form>
+    </div>
+  </div>
+</div>

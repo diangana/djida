@@ -1,0 +1,67 @@
+<!--Cart-->
+<h4 *ngIf="cartItems.length === 0" class="cartheader ml-4"  >Votre panier est vide.</h4>
+<a *ngIf="cartItems.length === 0" routerLink="/cagnottes" class="btn btn-warning">faire un don</a>
+<h4 *ngIf="cartItems.length >=1" class="cartheader ml-4"  >Votre panier contient {{prods}} articles.</h4>
+<a *ngIf="cartItems.length >=1" routerLink="/cagnottes" class="btn btn-outline-warning">faire un autre don</a>
+<div *ngIf="cartItems.length !== 0" class="cart-overlay">
+ <!--  <h2 class="cartHeading">Cart Items</h2> -->
+  <div class="cart">
+    <div class="cart-content">
+      <!--cart item-->
+      <div class="cart-item" *ngFor="let item of cartItems">
+        <div class="card mb-5 " >
+          <div class="row g-0">
+            <div class="col-4">
+
+        <img *ngIf="item.url!=null" src="\assets\images\upload\{{item.url}}" class="product-img" alt="item" style="width: 100%;">
+        <img *ngIf="item.url==null" src="\assets\images\DJIDA.png" class="product-img" alt="item" style="width: 100%;">
+
+            </div>
+            <div class="col-8">
+              <div class="card-body">
+          <h4 class="card-title">{{item.nom}}</h4>
+          <p class="card-text"> {{item.description.substr(0,100)}}</p>
+          <h4 style="padding-top: 15px;">{{item.prix}}€
+          </h4>
+        </div>
+        <div class="counter mx-auto my-auto">
+          <!-- <i class="fas fa-plus-circle" (click)="handleIncrement(item)"></i> -->
+          <i class="fa fa-plus mt-4" aria-hidden="true" (click)="handleIncrement(item)"></i>
+          <p class="item-amount mt-4">
+            quantite
+          <a a routerLink="/panier" type="bouton" class="btn btn-failure" (click)="handleDecriment(item)">-</a>
+          {{item.quantity}}
+            <a a routerLink="/panier" type="bouton" class="btn btn-success" (click)="handleIncrement(item)">+</a>
+
+          </p>
+          <i class="fas fa-minus-circle" (click)="handleDecriment(item)"></i>
+          <i class="fa fa-minus mt-4" aria-hidden="true" (click)="handleDecriment(item)"></i>
+        </div>
+        <span class="remove-item" class="makebold" style="cursor:pointer" (click)="handelRemoveItem(item)" >Remove</span>
+      </div>
+      </div></div></div>
+      <!--End cart item-->
+    </div>
+     <div >
+      <h3 class="price">prix total:  <span class="cart-price">{{cartTotalValue.totalAmount}}€</span></h3>
+      <a type="bouton" class="btn btn-success" (click)="getTotalAmount();panier.getProductList()"data-bs-toggle="modal" data-bs-target="#exampleModal">payer</a>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Payer</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="clique=false"></button>
+            </div>
+            <div class="modal-body">
+      <app-paypal *ngIf="clique==true"></app-paypal>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="clique=false">Close</button>
+    </div>
+  </div>
+</div>
+
+      </div>
+    </div>
+</div>
+</div>
